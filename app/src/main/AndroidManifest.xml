@@ -2,20 +2,54 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frame.projectframe">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--读写-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!--网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
+        android:name=".app.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WelcomeActivity">
+        <!-- ====================================activity========================================= -->
+        <!--引导页面-->
+        <activity
+            android:name=".ui.activity.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--登录页面-->
+        <activity
+            android:name=".ui.activity.login.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--主页面-->
+        <activity
+            android:name=".ui.activity.main.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!-- ====================================service========================================= -->
+        <!-- 初始化Service -->
+        <service android:name=".component.service.AppIntentService" />
+        <!--apk更新-->
+        <service android:name=".component.service.UpdateService" />
+
+        <meta-data
+            android:name="design_width"
+            android:value="720" />
+        <meta-data
+            android:name="design_height"
+            android:value="1280" />
     </application>
 
 </manifest>
