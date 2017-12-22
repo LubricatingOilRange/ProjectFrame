@@ -11,7 +11,7 @@ import com.orhanobut.logger.Logger;
  */
 
 public class ViewsUtil {
-    /**
+    /*
      * 设置View文本
      *
      * @param view
@@ -48,7 +48,7 @@ public class ViewsUtil {
         view.setEnabled(false);
     }
 
-    /**
+    /*
      * 设置控件View可见
      *
      * @param view （）
@@ -112,7 +112,7 @@ public class ViewsUtil {
         else setINVisible(view);
     }
 
-    /**
+    /*
      * 获取目标View在屏幕中的位置
      *
      * @param parent （目标View）
@@ -123,7 +123,7 @@ public class ViewsUtil {
         return location;
     }
 
-    /**
+    /*
      * 获取控件的宽高
      *
      * @param parent
@@ -134,7 +134,7 @@ public class ViewsUtil {
         return new int[]{parent.getMeasuredWidth(), parent.getMeasuredHeight()};
     }
 
-    /**
+    /*
      * 设置测量模式为UNSPECIFIED可以确保测量不受父View的影响
      *
      * @param view

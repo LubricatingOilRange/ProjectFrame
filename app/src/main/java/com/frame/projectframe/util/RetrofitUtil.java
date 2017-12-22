@@ -12,7 +12,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 public class RetrofitUtil {
 
-    /**
+    /*
      * 获取OkHttpClient.Builder
      *
      * @return
@@ -21,7 +21,7 @@ public class RetrofitUtil {
         return new Retrofit.Builder();
     }
 
-    /**
+    /*
      * @param builder
      * @param client
      * @param url

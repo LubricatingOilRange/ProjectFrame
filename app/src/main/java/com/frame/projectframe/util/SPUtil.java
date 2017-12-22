@@ -21,14 +21,14 @@ import java.util.Map;
  */
 
 public class SPUtil {
-    /**
+    /*
      * 保存在手机里面的文件名
      */
     public static final String FILE_NAME = "share_data";
     private static final String CONFIG = "config";
     private static SharedPreferences sp;
 
-    /**
+    /*
      * 引用数据类型的保存(对象)
      *
      * @param t
@@ -136,7 +136,7 @@ public class SPUtil {
     }
 
 
-    /**
+    /*
      * 保存图片到SharedPreferences
      *
      * @param mContext
@@ -155,7 +155,7 @@ public class SPUtil {
         put(mContext, key, imgString);
     }
 
-    /**
+    /*
      * 从SharedPreferences读取图片
      *
      * @param mContext

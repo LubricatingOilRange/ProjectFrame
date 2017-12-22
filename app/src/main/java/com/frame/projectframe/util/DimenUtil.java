@@ -20,7 +20,7 @@ public class DimenUtil {
         return false;
     }
 
-    /**
+    /*
      * dp转px
      *
      * @param context
@@ -32,7 +32,7 @@ public class DimenUtil {
         return (int) (dipValue * scale + 0.5f);
     }
 
-    /**
+    /*
      * px转dp
      *
      * @param context

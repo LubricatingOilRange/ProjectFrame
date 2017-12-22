@@ -15,7 +15,7 @@ import java.util.Date;
 public class DateUtil {
 
 
-    /**
+    /*
      * 根据不同的dateType 返回不同的日期格式
      *
      * @param dateType
@@ -40,7 +40,7 @@ public class DateUtil {
         return SimpleDateFormat.getDateTimeInstance();
     }
 
-    /**
+    /*
      * 获取当前的日期 20171118
      *
      * @return
@@ -49,7 +49,7 @@ public class DateUtil {
         return dateFormat.format(new Date());
     }
 
-    /**
+    /*
      * 获取前一天的日期 20171117  2017-11-17  2017/11/17
      *
      * @param currentDayDate

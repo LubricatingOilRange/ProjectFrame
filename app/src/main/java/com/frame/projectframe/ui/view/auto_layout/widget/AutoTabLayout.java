@@ -1,7 +1,9 @@
 package com.frame.projectframe.ui.view.auto_layout.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -28,6 +30,7 @@ public class AutoTabLayout extends TabLayout {
         this(context, attrs, 0);
     }
 
+    @SuppressLint({"PrivateResource", "CustomViewStyleable"})
     public AutoTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -48,6 +51,7 @@ public class AutoTabLayout extends TabLayout {
         a.recycle();
     }
 
+    @SuppressLint({"CustomViewStyleable", "PrivateResource"})
     private int loadTextSizeFromTextAppearance(int textAppearanceResId) {
         TypedArray a = getContext().obtainStyledAttributes(textAppearanceResId,
                 R.styleable.TextAppearance);
@@ -62,13 +66,13 @@ public class AutoTabLayout extends TabLayout {
     }
 
     @Override
-    public void addTab(Tab tab, int position, boolean setSelected) {
+    public void addTab(@NonNull Tab tab, int position, boolean setSelected) {
         super.addTab(tab, position, setSelected);
         setUpTabTextSize(tab);
     }
 
     @Override
-    public void addTab(Tab tab, boolean setSelected) {
+    public void addTab(@NonNull Tab tab, boolean setSelected) {
         super.addTab(tab, setSelected);
         setUpTabTextSize(tab);
     }

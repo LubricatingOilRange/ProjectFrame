@@ -19,7 +19,7 @@ import android.view.WindowManager;
 
 public class StatusBarUtil {
 
-    /**
+    /*
      * 获取顶部状态栏高度
      */
     public static int getStatusBarHeight(Context context) {
@@ -47,7 +47,7 @@ public class StatusBarUtil {
         return 0;
     }
 
-    /**
+    /*
      * 设置页面最外层布局 FitsSystemWindows 属性
      *
      * @param activity
@@ -66,7 +66,7 @@ public class StatusBarUtil {
         }
     }
 
-    /**
+    /*
      * 根据系统API 来更改状态栏的颜色
      *
      * @param activity
@@ -83,7 +83,7 @@ public class StatusBarUtil {
         fitsSystemWindows(activity);
     }
 
-    /**
+    /*
      * 更改占位空间的背景颜色来实现状态栏的颜色
      *
      * @param activity
@@ -96,7 +96,7 @@ public class StatusBarUtil {
         fitsSystemWindows(activity);
     }
 
-    /**
+    /*
      * 更改占位空间的背景Drawable来实现状态栏的渐变颜色
      *
      * @param activity
@@ -109,7 +109,7 @@ public class StatusBarUtil {
         fitsSystemWindows(activity);
     }
 
-    /**
+    /*
      * 通过设置全屏，设置状态栏透明
      *
      * @param window
@@ -138,7 +138,7 @@ public class StatusBarUtil {
         }
     }
 
-    /**
+    /*
      * 添加一个Color背景占位
      *
      * @param window
@@ -153,7 +153,7 @@ public class StatusBarUtil {
         decorView.addView(statusBarView, lp);
     }
 
-    /**
+    /*
      * 添加一个Drawable占位
      *
      * @param window

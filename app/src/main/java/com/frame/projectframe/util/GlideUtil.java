@@ -9,7 +9,7 @@ import com.frame.projectframe.module.glide.GlideCircleTransform;
 import com.frame.projectframe.module.glide.GlideRoundTransform;
 import com.frame.projectframe.module.glide.RotateTransformation;
 
-/**
+/*
  * Created by ruibing.han on 2017/8/4.
  */
 

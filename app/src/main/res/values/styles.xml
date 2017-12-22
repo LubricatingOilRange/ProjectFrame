@@ -7,6 +7,12 @@
         <!--activity切换动画-->
     </style>
 
+    <style name="ActivityTheme" parent="AppTheme.NoActionBar">
+        <!--键盘的设置-->
+        <item name="android:windowSoftInputMode">adjustResize|stateAlwaysHidden</item>
+        <!--activity切换动画-->
+    </style>
+
     <style name="activityTheme_NewTask" parent="AppTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:animationDuration">0</item>

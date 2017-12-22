@@ -28,7 +28,7 @@ public class ToastUtil {
         static ToastUtil sInstance = new ToastUtil(MyApplication.getInstance());
     }
 
-    /**
+    /*
      * 展示短 Toast
      *
      * @param msg
@@ -37,7 +37,7 @@ public class ToastUtil {
         getInstance().createShortToast(msg, Toast.LENGTH_SHORT).show();
     }
 
-    /**
+    /*
      * 展示长 Toast
      *
      * @param msg

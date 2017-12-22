@@ -23,7 +23,7 @@
         <!--引导页面-->
         <activity
             android:name=".ui.activity.WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/ActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,11 +33,11 @@
         <!--登录页面-->
         <activity
             android:name=".ui.activity.login.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/ActivityTheme" />
         <!--主页面-->
         <activity
             android:name=".ui.activity.main.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/ActivityTheme" />
         <!-- ====================================service========================================= -->
         <!-- 初始化Service -->
         <service android:name=".component.service.AppIntentService" />

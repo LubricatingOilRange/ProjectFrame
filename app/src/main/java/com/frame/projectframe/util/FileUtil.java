@@ -94,7 +94,7 @@ public class FileUtil {
     /**
      * 删除文件（若为目录，则递归删除子目录和文件）
      *
-     * @param file
+     * @param file ()
      * @param delThisPath true代表删除参数指定file，false代表保留参数指定file
      */
     public static void deleteFile(File file, boolean delThisPath) {

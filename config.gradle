@@ -3,7 +3,7 @@ ext {
     android = [
             compileSdkVersion: 25,
             buildToolsVersion: '26.0.2',
-            applicationId    : "com.app.appframe",
+            applicationId    : "com.frame.projectframe",
             minSdkVersion    : 19,
             targetSdkVersion : 26,
             versionCode      : 1,

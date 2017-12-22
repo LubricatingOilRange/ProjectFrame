@@ -22,7 +22,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 public class OkHttpUtil {
 
-    /**
+    /*
      * 获取OkHttpClient.Builder
      *
      * @return
