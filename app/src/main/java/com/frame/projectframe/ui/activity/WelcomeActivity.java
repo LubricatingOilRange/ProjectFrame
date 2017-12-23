@@ -5,7 +5,7 @@ import android.widget.LinearLayout;
 
 import com.frame.projectframe.R;
 import com.frame.projectframe.base.activity.BaseActivity;
-import com.frame.projectframe.module.rxjava.flowable.RxFlowCreateUtil;
+import com.frame.projectframe.module.rxjava.flowable.RxFlowTransformUtil;
 import com.frame.projectframe.util.StatusBarUtil;
 
 import butterknife.BindView;
@@ -28,7 +28,7 @@ public class WelcomeActivity extends BaseActivity {
         findViewById(R.id.iv_test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RxFlowCreateUtil.repeat();
+                RxFlowTransformUtil.groupBy();
             }
         });
     }

@@ -31,7 +31,7 @@ public class RetrofitUtil {
                 .baseUrl(url)
                 .client(client)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(DecodeConverterFactory.create())
+                .addConverterFactory(DecodeConverterFactory.create(GsonUtil.defaultGson()))
                 .build();
     }
 }
