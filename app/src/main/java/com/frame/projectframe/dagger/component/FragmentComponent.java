@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.frame.projectframe.dagger.module.FragmentModule;
 import com.frame.projectframe.dagger.scope.FragmentScope;
+import com.frame.projectframe.ui.fragment.DemoFragment;
 
 import dagger.Component;
 
@@ -13,5 +14,8 @@ import dagger.Component;
 @FragmentScope
 @Component(dependencies = AppComponent.class, modules = {FragmentModule.class})
 public interface FragmentComponent {
+
     Activity getActivity();
+
+    void inject(DemoFragment demoFragment);
 }

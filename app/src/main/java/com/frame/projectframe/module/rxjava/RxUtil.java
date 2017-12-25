@@ -6,6 +6,8 @@ import com.frame.projectframe.http.response.BaseResponse;
 import com.frame.projectframe.http.response.ResultErrorResponse;
 import com.frame.projectframe.http.response.ResultResponse;
 
+import org.reactivestreams.Publisher;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
@@ -37,12 +39,35 @@ public class RxUtil {
     }
 
     /**
+     * 没有基类  直接处理返回结果
+     *
+     * @param <T>
+     */
+    public static <T> FlowableTransformer<T, T> handleNoParamResult() {   //compose判断结果
+        return new FlowableTransformer<T, T>() {
+            @Override
+            public Publisher<T> apply(Flowable<T> response) {
+                return response.flatMap(new Function<T, Publisher<T>>() {
+                    @Override
+                    public Publisher<T> apply(T t) throws Exception {
+                        if (t != null) {
+                            return createData(t);
+                        } else {
+                            return Flowable.error(new AppException("服务器异常", "-1"));
+                        }
+                    }
+                });
+            }
+        };
+    }
+
+    /**
      * 返回一个参数(result)的 返回结果处理
      *
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<ResultResponse<T>, T> handleResult() {   //compose判断结果
+    public static <T> FlowableTransformer<ResultResponse<T>, T> handleOneParamResult() {   //compose判断结果
         return new FlowableTransformer<ResultResponse<T>, T>() {
             @Override
             public Flowable<T> apply(Flowable<ResultResponse<T>> httpResponseFlowable) {
@@ -65,7 +90,7 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<ResultErrorResponse<T>, T> handleResultError() {   //compose判断结果
+    public static <T> FlowableTransformer<ResultErrorResponse<T>, T> handleTwoParamResult() {   //compose判断结果
         return new FlowableTransformer<ResultErrorResponse<T>, T>() {
             @Override
             public Flowable<T> apply(Flowable<ResultErrorResponse<T>> httpResponseFlowable) {
@@ -89,7 +114,7 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<BaseResponse<T>, T> handleBaseResult() {   //compose判断结果
+    public static <T> FlowableTransformer<BaseResponse<T>, T> handleThreeParamResult() {   //compose判断结果
         return new FlowableTransformer<BaseResponse<T>, T>() {
             @Override
             public Flowable<T> apply(Flowable<BaseResponse<T>> httpResponseFlowable) {

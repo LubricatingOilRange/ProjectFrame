@@ -45,7 +45,11 @@ public class RxFlowCreateUtil {
 
     /**
      * Flowable中的create创建操作符的使用
-     * BackpressureStrategy：Buffer(全部缓存--缓存策略),LATEST,DROP--需要什么就发射什么数据
+     * BackpressureStrategy：
+     * Buffer(全部缓存--缓存策略（换更大的缓存池 超过128）),
+     * LATEST,DROP（接受到最后一个事件）--需要什么就发射什么数据,
+     * ERROR(超过128 就报异常),
+     * MISSING( 超过128个就丢弃)
      */
     public static void create() {
         Flowable.create(new FlowableOnSubscribe<String>() {
@@ -198,6 +202,7 @@ public class RxFlowCreateUtil {
      */
     public static void interval() {
         Flowable.interval(2, TimeUnit.SECONDS)
+                .onBackpressureDrop()
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long time) throws Exception {

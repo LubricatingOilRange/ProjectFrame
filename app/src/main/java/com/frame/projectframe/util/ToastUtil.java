@@ -35,10 +35,6 @@ public class ToastUtil {
         return sInstance;
     }
 
-    private static class ToastUtilHolder {
-
-    }
-
     /*
      * 展示短 Toast
      *

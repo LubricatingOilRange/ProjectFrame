@@ -22,13 +22,13 @@ import io.reactivex.functions.Function;
 //RxJava2 的转换类型操作符的使用
 public class RxFlowTransformUtil {
     /*
-     * Buffer(2) 缓存后每次发射两个数据，直到没有数据
+     * Buffer(2,数据) 缓存后每次发射两个数据，直到没有数据
      * Map (1 对1)
      * FlatMap 无序（1 对 1，多 对 多）
      * concatMap 有序（1 对 1，多 对 多）
-     * GroupBy
-     * Scan
-     * Window
+     * GroupBy (分组)
+     * Scan （累加）
+     * Window （Buffer,Flowable（被观察者））
      */
 
     /**
