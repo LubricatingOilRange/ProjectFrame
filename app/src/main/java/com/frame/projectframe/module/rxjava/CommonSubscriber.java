@@ -38,7 +38,6 @@ public abstract class CommonSubscriber<T> extends ResourceSubscriber<T> {
         if (mView == null) {
             return;
         }
-
         if (isShowErrorState) {
             if (e instanceof AppException) {
                 mView.showErrorMsg((AppException) e);

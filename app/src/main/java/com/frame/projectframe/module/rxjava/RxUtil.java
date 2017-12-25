@@ -59,7 +59,6 @@ public class RxUtil {
             }
         };
     }
-
     /**
      * 返回两个参数(result)的 返回结果处理
      *

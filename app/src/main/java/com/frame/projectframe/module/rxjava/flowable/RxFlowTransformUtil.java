@@ -151,19 +151,62 @@ public class RxFlowTransformUtil {
                 });
     }
 
+    /**
+     * 累加 (current值从0 - 3，last前一次累加值)
+     * last + current = scan
+     * 0  +    0    =  0
+     * 0  +    1    =  1
+     * 1  +    2    =  3
+     * 3  +    3    =  6
+     * 6  +    4    =  10
+     */
     public static void scan() {
-        Flowable.range(0, 10)
+        Flowable.range(0, 5)
+                // last,current,返回值
                 .scan(new BiFunction<Integer, Integer, Integer>() {
+                    /**
+                     * @param last    (上一次结算值)
+                     * @param current （当前的数值）
+                     */
                     @Override
-                    public Integer apply(Integer integer, Integer integer2) throws Exception {
-                        return integer + integer2;
+                    public Integer apply(Integer last, Integer current) throws Exception {
+                        Logger.i("last:" + last + " --current:" + current);
+                        return last + current;
                     }
                 })
                 .subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-
+                        Logger.i("scan:" + integer);
                     }
                 });
+    }
+
+    /*
+     * 窗口，它可以批量或者按周期性从Observable收集数据到一个集合，
+     * 然后把这些数据集合打包发射，而不是一次发射一个数据,类似于Buffer，
+     * 但Buffer发射的是数据，Window发射的是Observable~
+     */
+    public static void window() {
+        Flowable.range(1, 5)
+                .window(2)//每次发射 2 个数据
+                .subscribe(new Consumer<Flowable<Integer>>() {
+                    @Override
+                    public void accept(Flowable<Integer> integerFlowable) throws Exception {
+                        Logger.i("Flowable:" + integerFlowable.toString());
+                        integerFlowable.subscribe(new Consumer<Integer>() {
+                            @Override
+                            public void accept(Integer integer) throws Exception {
+                                Logger.i("window:" + integer);
+                            }
+                        });
+                    }
+                });
+
+        /* 数据返回格式
+         *  integerFlowable-1      1 , 2
+         *  integerFlowable-2      3 , 4
+         *  integerFlowable-3      5
+         */
     }
 }

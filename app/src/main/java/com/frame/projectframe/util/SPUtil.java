@@ -188,7 +188,7 @@ public class SPUtil {
             try {
                 return clz.getMethod("apply");
             } catch (NoSuchMethodException e) {
-                ToastUtil.shortShow(e.getMessage());
+                ToastUtil.getInstance().shortShow(e.getMessage());
             }
 
             return null;
@@ -202,7 +202,7 @@ public class SPUtil {
                 try {
                     sApplyMethod.invoke(editor);
                 } catch (IllegalAccessException | InvocationTargetException e) {
-                    ToastUtil.shortShow(e.getMessage());
+                    ToastUtil.getInstance().shortShow(e.getMessage());
                 }
                 return;
             }

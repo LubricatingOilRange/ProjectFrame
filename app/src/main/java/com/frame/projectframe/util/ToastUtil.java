@@ -1,5 +1,6 @@
 package com.frame.projectframe.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.View;
@@ -13,19 +14,29 @@ import com.frame.projectframe.app.MyApplication;
  * Created by codeest on 2016/8/4.
  */
 public class ToastUtil {
+    @SuppressLint("StaticFieldLeak")
+    private static ToastUtil sInstance;
+
     private Context mContext;
 
-    //静态内部类单利模式
-    private ToastUtil(Context context) {
+    public ToastUtil(Context context) {
         this.mContext = context;
     }
 
     public static ToastUtil getInstance() {
-        return ToastUtilHolder.sInstance;
+        if (sInstance == null) {
+            synchronized (ToastUtil.class) {
+                if (sInstance == null) {
+                    sInstance = new ToastUtil(MyApplication.getInstance());
+                }
+            }
+        }
+
+        return sInstance;
     }
 
     private static class ToastUtilHolder {
-        static ToastUtil sInstance = new ToastUtil(MyApplication.getInstance());
+
     }
 
     /*
@@ -33,8 +44,8 @@ public class ToastUtil {
      *
      * @param msg
      */
-    public static void shortShow(String msg) {
-        getInstance().createShortToast(msg, Toast.LENGTH_SHORT).show();
+    public void shortShow(String msg) {
+        createShortToast(msg, Toast.LENGTH_SHORT).show();
     }
 
     /*
@@ -42,8 +53,8 @@ public class ToastUtil {
      *
      * @param msg
      */
-    public static void longToast(String msg) {
-        getInstance().createShortToast(msg, Toast.LENGTH_LONG).show();
+    public void longToast(String msg) {
+        createShortToast(msg, Toast.LENGTH_LONG).show();
     }
 
     /**

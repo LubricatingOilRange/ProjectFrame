@@ -28,7 +28,7 @@ public class WelcomeActivity extends BaseActivity {
         findViewById(R.id.iv_test).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RxFlowTransformUtil.groupBy();
+                RxFlowTransformUtil.window();
             }
         });
     }

@@ -33,13 +33,13 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     //获取成功后的回调方法
     @Override
     public void showData(UserCommand userCommand) {
-        ToastUtil.shortShow("获取成功");
+        ToastUtil.getInstance().shortShow("获取成功");
     }
 
     //回去数据失败返回错误信息
     @Override
     public void showErrorMsg(AppException e) {
 
-        ToastUtil.shortShow(e.getMessage());
+        ToastUtil.getInstance().shortShow(e.getMessage());
     }
 }

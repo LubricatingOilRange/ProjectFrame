@@ -29,7 +29,6 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 //                        mView.showData(userCommand);
 //                    }
 //                }));
-
         mView.showData(null);
     }
 

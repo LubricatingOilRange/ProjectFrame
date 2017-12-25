@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.frame.projectframe.app.MyApplication;
 import com.frame.projectframe.ui.view.auto_layout.AutoLayoutActivity;
+import com.frame.projectframe.util.ToastUtil;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -26,7 +27,6 @@ public abstract class BaseActivity extends AutoLayoutActivity implements BaseAct
         MyApplication.getInstance().addActivity(this);
         onEventAndData();//初始化事件或获取网络数据
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
