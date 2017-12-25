@@ -16,13 +16,12 @@ import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/22.
  */
-
 //RxJava2 的转换类型操作符的使用
 public class RxFlowTransformUtil {
-    /**
+    /*
      * Buffer(2) 缓存后每次发射两个数据，直到没有数据
      * Map (1 对1)
      * FlatMap 无序（1 对 1，多 对 多）
@@ -46,7 +45,7 @@ public class RxFlowTransformUtil {
                 });
     }
 
-    /**
+    /*
      * 一对一，1 - 1，2 - 2
      * 上游接收到一个数据1 就调用一次onNext(),在这调用了三次
      */
@@ -65,7 +64,6 @@ public class RxFlowTransformUtil {
                         Logger.i("map:" + s);
                     }
                 });
-
     }
 
     /**
@@ -73,10 +71,6 @@ public class RxFlowTransformUtil {
      * 1,2,3 -- 1,2,3（存在1，3，2）(上游将123进行保存后 连续发送数据给订阅者 -》 123) 只调用onNext()方法一次
      */
     public static void flatMap() {
-        List<String> data = new ArrayList<>();
-        data.add("1");
-        data.add("2");
-        data.add("3");
         Flowable.just("1", "2", "3")
                 .flatMap(new Function<String, Publisher<String>>() {
                     @Override

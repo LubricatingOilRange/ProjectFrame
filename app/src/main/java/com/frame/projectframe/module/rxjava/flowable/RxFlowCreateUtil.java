@@ -3,10 +3,8 @@ package com.frame.projectframe.module.rxjava.flowable;
 import com.orhanobut.logger.Logger;
 
 import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
