@@ -201,7 +201,7 @@ public class RxFlowCreateUtil {
      * 每隔2s发射一次数据，订阅者接受到的数据time是累加的，0,1,2,3,4.....
      */
     public static void interval() {
-        Flowable.interval(2, TimeUnit.SECONDS)
+        Flowable.interval(2000, 1000, TimeUnit.MILLISECONDS)
                 .onBackpressureDrop()
                 .subscribe(new Consumer<Long>() {
                     @Override

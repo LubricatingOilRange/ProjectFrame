@@ -33,11 +33,6 @@ public class RetrofitHelper implements HttpHelper {
      */
     @Override
     public Flowable<BaseResponse<UserCommand>> login(Map<String, String> parameterMap) {
-        try {
-            return mAppService.login(parameterMap);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return mAppService.login(parameterMap);
     }
 
