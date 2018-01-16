@@ -17,8 +17,6 @@ ext {
             okhttp     : "3.6.0",
             retrofit   : "2.2.0",
             greendao   : "3.2.0",
-            leakcanary : "1.4-beta2",
-            blockcanary: "1.2.1",
     ]
     dependencies = [
             //base
@@ -58,14 +56,6 @@ ext {
 //            //greenDao数据库
 //            "greendao"                  : "org.greenrobot:greendao:${dependVersion.greendao}",
 //            "greendao-generator"        : "org.greenrobot:greendao-generator:${dependVersion.greendao}",
-
-            //检测内存泄露，logcat 就会打印出信息
-            "leakcanary-android"        : "com.squareup.leakcanary:leakcanary-android:${dependVersion.leakcanary}",
-            "leakcanary-android-no-op"  : "com.squareup.leakcanary:leakcanary-android-no-op:${dependVersion.leakcanary}",
-
-            //性能监控组件 找出App界面卡顿元凶（ANR...）
-            "blockcanary-android"       : "com.github.moduth:blockcanary-android:${dependVersion.blockcanary}",
-            "blockcanary-no-op"         : "com.github.moduth:blockcanary-no-op:${dependVersion.blockcanary}",
 
             //Other
             "gson"                      : "com.google.code.gson:gson:2.7",//gson

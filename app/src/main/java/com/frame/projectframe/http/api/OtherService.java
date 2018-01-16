@@ -5,6 +5,5 @@ package com.frame.projectframe.http.api;
  */
 
 public interface OtherService {
-
     String HOST = "http://180.168.134.212:18601/";
 }

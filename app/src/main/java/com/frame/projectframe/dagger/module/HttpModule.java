@@ -27,12 +27,7 @@ public class HttpModule {
         return OkHttpUtil.getOkHttpClient_Builder();
     }
 
-    /**
-     * OkHttpClient 的创建
-     *
-     * @param builder
-     * @return
-     */
+    //OkHttpClient 的创建
     @Singleton
     @Provides
     OkHttpClient provideClient(OkHttpClient.Builder builder) {

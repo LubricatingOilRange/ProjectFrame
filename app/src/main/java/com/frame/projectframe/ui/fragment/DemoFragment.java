@@ -1,5 +1,6 @@
 package com.frame.projectframe.ui.fragment;
 
+import com.frame.projectframe.R;
 import com.frame.projectframe.base.fragment.BaseMvpFragment;
 import com.frame.projectframe.http.exception.AppException;
 
@@ -10,7 +11,7 @@ import com.frame.projectframe.http.exception.AppException;
 public class DemoFragment extends BaseMvpFragment<DemoFragmentPresenter> implements DemoFragmentContract.View {
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.layout_toast;
     }
 
     @Override

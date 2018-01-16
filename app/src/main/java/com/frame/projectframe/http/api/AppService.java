@@ -1,7 +1,7 @@
 package com.frame.projectframe.http.api;
 
 import com.frame.projectframe.http.bean.UserCommand;
-import com.frame.projectframe.http.response.BaseResponse;
+import com.frame.projectframe.http.response.ParamThreeResponse;
 
 import java.util.Map;
 
@@ -19,5 +19,5 @@ public interface AppService {
 
     //登陆页面
     @POST("shopdog/auth/login")
-    Flowable<BaseResponse<UserCommand>> login(@QueryMap Map<String, String> map);
+    Flowable<ParamThreeResponse<UserCommand>> login(@QueryMap Map<String, String> map);
 }

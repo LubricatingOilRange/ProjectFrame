@@ -2,7 +2,7 @@ package com.frame.projectframe.http.helper;
 
 
 import com.frame.projectframe.http.bean.UserCommand;
-import com.frame.projectframe.http.response.BaseResponse;
+import com.frame.projectframe.http.response.ParamThreeResponse;
 
 import java.util.Map;
 
@@ -19,5 +19,5 @@ public interface HttpHelper {
      *
      * @return
      */
-    Flowable<BaseResponse<UserCommand>> login(Map<String, String> parameterMap);
+    Flowable<ParamThreeResponse<UserCommand>> login(Map<String, String> parameterMap);
 }

@@ -21,13 +21,14 @@ import java.util.Map;
  */
 
 public class SPUtil {
-    /*
-     * 保存在手机里面的文件名
-     */
+
+    //-------------------------------------------file_key------------------------------
     public static final String FILE_NAME = "share_data";
     private static final String CONFIG = "config";
-    private static SharedPreferences sp;
 
+    //-------------------------------------------name_key------------------------------
+    public static final String RECORD_TIME = "record_time";//前台或后台进程切换的时间保存
+    public static final String USER_COMMAND = "userCommand";//用户的保存
     /*
      * 引用数据类型的保存(对象)
      *

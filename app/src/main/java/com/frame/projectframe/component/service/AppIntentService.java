@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import com.frame.projectframe.BuildConfig;
 import com.frame.projectframe.app.MyApplication;
+import com.frame.projectframe.ui.view.auto_layout.config.AutoLayoutConfig;
 import com.github.moduth.blockcanary.BlockCanary;
 import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -31,7 +32,12 @@ public class AppIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent) {
-        Logger.i("AppIntentService 已开启", "bbb");
+
+        //65535方法限制处理的初始化
+        //MultiDex.install(this);
+
+        //AutoLayout屏幕适配
+        AutoLayoutConfig.getInstance().useDeviceSize().init(this);
 
         //初始化数据库
         //GreenDaoManager.getInstance();
@@ -43,17 +49,10 @@ public class AppIntentService extends IntentService {
                 return BuildConfig.DEBUG;
             }
         });
-
-        //初始化内存泄漏检测
-        LeakCanary.install(MyApplication.getInstance());
-
-        //性能监控组件 找出App界面卡顿元凶（ANR...）
-        BlockCanary.install(this, new BlockCanaryContext()).start();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Logger.i("AppIntentService 已关闭", "bbb");
     }
 }

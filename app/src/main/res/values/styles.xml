@@ -6,6 +6,12 @@
         <item name="android:windowSoftInputMode">adjustResize|stateAlwaysHidden</item>
         <!--activity切换动画-->
     </style>
+    <!--迎导页面 添加背景加载图 去除启动出现空白页面-->
+    <style name="WelcomeTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowSoftInputMode">adjustResize|stateAlwaysHidden</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@mipmap/ic_app_launcher</item>
+    </style>
 
     <style name="ActivityTheme" parent="AppTheme.NoActionBar">
         <!--键盘的设置-->

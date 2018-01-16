@@ -22,6 +22,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -50,7 +51,6 @@ dependencies {
     //retrofit 的依赖
     compile rootProject.ext.dependencies["retrofit"]
     compile rootProject.ext.dependencies["retrofit-converter-gson"]
-
 
     //rxJava 的依赖
     compile rootProject.ext.dependencies["rxjava"]

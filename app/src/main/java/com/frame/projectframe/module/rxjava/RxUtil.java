@@ -2,9 +2,9 @@ package com.frame.projectframe.module.rxjava;
 
 import com.frame.projectframe.app.Constant;
 import com.frame.projectframe.http.exception.AppException;
-import com.frame.projectframe.http.response.BaseResponse;
-import com.frame.projectframe.http.response.ResultErrorResponse;
-import com.frame.projectframe.http.response.ResultResponse;
+import com.frame.projectframe.http.response.ParamOneResponse;
+import com.frame.projectframe.http.response.ParamThreeResponse;
+import com.frame.projectframe.http.response.ParamTwoResponse;
 
 import org.reactivestreams.Publisher;
 
@@ -67,13 +67,13 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<ResultResponse<T>, T> handleOneParamResult() {   //compose判断结果
-        return new FlowableTransformer<ResultResponse<T>, T>() {
+    public static <T> FlowableTransformer<ParamOneResponse<T>, T> handleOneParamResult() {   //compose判断结果
+        return new FlowableTransformer<ParamOneResponse<T>, T>() {
             @Override
-            public Flowable<T> apply(Flowable<ResultResponse<T>> httpResponseFlowable) {
-                return httpResponseFlowable.flatMap(new Function<ResultResponse<T>, Flowable<T>>() {
+            public Flowable<T> apply(Flowable<ParamOneResponse<T>> httpResponseFlowable) {
+                return httpResponseFlowable.flatMap(new Function<ParamOneResponse<T>, Flowable<T>>() {
                     @Override
-                    public Flowable<T> apply(ResultResponse<T> resultResponse) {
+                    public Flowable<T> apply(ParamOneResponse<T> resultResponse) {
                         if (resultResponse.getData() != null) {
                             return createData(resultResponse.getData());
                         } else {
@@ -90,13 +90,13 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<ResultErrorResponse<T>, T> handleTwoParamResult() {   //compose判断结果
-        return new FlowableTransformer<ResultErrorResponse<T>, T>() {
+    public static <T> FlowableTransformer<ParamTwoResponse<T>, T> handleTwoParamResult() {   //compose判断结果
+        return new FlowableTransformer<ParamTwoResponse<T>, T>() {
             @Override
-            public Flowable<T> apply(Flowable<ResultErrorResponse<T>> httpResponseFlowable) {
-                return httpResponseFlowable.flatMap(new Function<ResultErrorResponse<T>, Flowable<T>>() {
+            public Flowable<T> apply(Flowable<ParamTwoResponse<T>> httpResponseFlowable) {
+                return httpResponseFlowable.flatMap(new Function<ParamTwoResponse<T>, Flowable<T>>() {
                     @Override
-                    public Flowable<T> apply(ResultErrorResponse<T> resultErrorResponse) {
+                    public Flowable<T> apply(ParamTwoResponse<T> resultErrorResponse) {
                         if (!resultErrorResponse.isError()) {
                             return createData(resultErrorResponse.getData());
                         } else {
@@ -114,13 +114,13 @@ public class RxUtil {
      * @param <T>
      * @return
      */
-    public static <T> FlowableTransformer<BaseResponse<T>, T> handleThreeParamResult() {   //compose判断结果
-        return new FlowableTransformer<BaseResponse<T>, T>() {
+    public static <T> FlowableTransformer<ParamThreeResponse<T>, T> handleThreeParamResult() {   //compose判断结果
+        return new FlowableTransformer<ParamThreeResponse<T>, T>() {
             @Override
-            public Flowable<T> apply(Flowable<BaseResponse<T>> httpResponseFlowable) {
-                return httpResponseFlowable.flatMap(new Function<BaseResponse<T>, Flowable<T>>() {
+            public Flowable<T> apply(Flowable<ParamThreeResponse<T>> httpResponseFlowable) {
+                return httpResponseFlowable.flatMap(new Function<ParamThreeResponse<T>, Flowable<T>>() {
                     @Override
-                    public Flowable<T> apply(BaseResponse<T> baseResponse) {
+                    public Flowable<T> apply(ParamThreeResponse<T> baseResponse) {
                         if (baseResponse.getData().equals(Constant.SUCCESSFUL_CODE)) {//返回有数据的结果
                             return createData(baseResponse.getData());
                         } else {

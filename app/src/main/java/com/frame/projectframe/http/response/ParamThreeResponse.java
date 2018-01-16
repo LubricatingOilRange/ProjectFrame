@@ -4,7 +4,7 @@ package com.frame.projectframe.http.response;
  * Created by codeest on 16/10/10.
  */
 
-public class BaseResponse<T> {
+public class ParamThreeResponse<T> {
 
     private T data;
     private String errorCode;

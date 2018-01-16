@@ -2,6 +2,9 @@ package com.frame.projectframe.app;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -12,6 +15,8 @@ import com.frame.projectframe.dagger.component.DaggerAppComponent;
 import com.frame.projectframe.dagger.module.AppModule;
 import com.frame.projectframe.dagger.module.HttpModule;
 import com.frame.projectframe.ui.view.auto_layout.config.AutoLayoutConfig;
+import com.frame.projectframe.util.SPUtil;
+import com.frame.projectframe.util.ToastUtil;
 import com.orhanobut.logger.Logger;
 
 import java.util.HashSet;
@@ -36,9 +41,9 @@ public class MyApplication extends Application {
 
         getScreenSize();//获取屏幕尺寸信息
 
-        AutoLayoutConfig.getInstance().useDeviceSize().init(this);//AutoLayout屏幕适配
+        initActivityLifecycleCallbacks();//页面所有activity的生命周期，实现是否是前台进程的功能实现
 
-        //MultiDex.install(this);//65535方法限制处理的初始化
+        initComponentCallbacks();//监听内存使用情况，当内存偏低时 进行释放处理
 
         AppIntentService.initService(instance);//需要通过服务进行初始化的
     }
@@ -66,29 +71,64 @@ public class MyApplication extends Application {
         SCREEN_HEIGHT = metrics.heightPixels;
         Logger.i("SCREEN_WIDTH:" + SCREEN_WIDTH + "/SCREEN_HEIGHT:" + SCREEN_HEIGHT);
     }
-
     /**
-     * 添加activity
-     *
-     * @param act
+     * 前台进程的功能实现
      */
-    public void addActivity(Activity act) {
-        if (allActivities == null) {
-            allActivities = new HashSet<>();
-        }
-        allActivities.add(act);
+    private int mActivityCount;
+
+    private void initActivityLifecycleCallbacks() {
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                if (allActivities == null) {
+                    allActivities = new HashSet<>();
+                }
+                allActivities.add(activity);//添加activity
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+                mActivityCount++;
+                if (mActivityCount == 1) {//切换到了后台进程
+                    Long time = System.currentTimeMillis() - (Long) SPUtil.get(activity, SPUtil.RECORD_TIME, -1L);//获取刚开始切花刀前台进程的时间
+                    if (time >= 5 * 60 * 1000) {//5分钟 表示 登陆超时了
+                        ToastUtil.getInstance().shortShow("登陆超时了");
+                    }
+                }
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+                mActivityCount--;
+                if (mActivityCount == 0) {//切换到了前台进程
+                    SPUtil.put(activity, SPUtil.RECORD_TIME, System.currentTimeMillis());//保存切换到后台进程的时间
+                }
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                if (allActivities != null) {
+                    allActivities.remove(activity);// 移除activity
+                }
+            }
+        });
     }
 
-    /**
-     * 移除activity
-     *
-     * @param act
-     */
-    public void removeActivity(Activity act) {
-        if (allActivities != null) {
-            allActivities.remove(act);
-        }
-    }
 
     /**
      * 移除所有activity
@@ -116,5 +156,54 @@ public class MyApplication extends Application {
         }
         android.os.Process.killProcess(android.os.Process.myPid());
         System.exit(0);
+    }
+
+    /**
+     * 监听内存使用情况
+     */
+    private void initComponentCallbacks() {
+        registerComponentCallbacks(new ComponentCallbacks2() {
+            /**
+             * Android 4.0后的替代 onLowMemory
+             * @param level
+             */
+            @Override
+            public void onTrimMemory(int level) {
+                // Android系统会根据当前内存使用的情况，传入对应的级别
+                // 下面以清除缓存为例子介绍
+                MyApplication.super.onLowMemory();
+                /**
+                 * 20，60 内存不足的级别 越大越严重
+                 * TRIM_MEMORY_RUNNING_MODERATE (5)
+                 * TRIM_MEMORY_RUNNING_LOW (10)
+                 * TRIM_MEMORY_RUNNING_CRITICAL(15)
+                 * TRIM_MEMORY_UI_HIDDEN （20）当应用程序中的所有UI组件全部不可见时
+                 * TRIM_MEMORY_BACKGROUND (40)
+                 * TRIM_MEMORY_MODERATE(60)
+                 * TRIM_MEMORY_COMPLETE (80)
+                 */
+                if (level >= ComponentCallbacks2.TRIM_MEMORY_MODERATE) {
+                    //可在此清除缓存部分缓存文件
+                }
+            }
+
+            /**
+             * 监听 应用程序 配置信息的改变，如屏幕旋转等
+             * @param newConfig ()
+             */
+            @Override
+            public void onConfigurationChanged(Configuration newConfig) {
+
+            }
+
+            /**
+             * 若想兼容Android 4.0前，请使用OnLowMemory（）
+             * Android系统整体内存较低时
+             */
+            @Override
+            public void onLowMemory() {
+
+            }
+        });
     }
 }

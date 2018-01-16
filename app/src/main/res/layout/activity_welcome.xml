@@ -5,44 +5,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/iv_test"
-                android:layout_width="@dimen/px_200"
-                android:layout_height="@dimen/px_200"
-                android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_welcome01" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:hint="请输入"
-                android:textSize="@dimen/px_30"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText" />
-
-            <ImageView
-                android:layout_width="@dimen/px_300"
-                android:layout_height="@dimen/px_300"
-                android:scaleType="fitXY"
-                android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_welcome01" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:hint="请输入"
-                android:textSize="@dimen/px_60"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </ScrollView>
-
 </LinearLayout>

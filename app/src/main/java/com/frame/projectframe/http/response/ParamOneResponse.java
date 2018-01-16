@@ -5,7 +5,7 @@ package com.frame.projectframe.http.response;
  */
 
 //只返回结果
-public class ResultResponse<T> {
+public class ParamOneResponse<T> {
 
     private T data;
 

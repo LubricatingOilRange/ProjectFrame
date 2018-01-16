@@ -24,7 +24,6 @@ public abstract class BaseActivity extends AutoLayoutActivity implements BaseAct
         setContentView(getLayoutId());
         mBind = ButterKnife.bind(this);
         onViewCreate();//View的初始化操作
-        MyApplication.getInstance().addActivity(this);
         onEventAndData();//初始化事件或获取网络数据
     }
     @Override
@@ -33,6 +32,5 @@ public abstract class BaseActivity extends AutoLayoutActivity implements BaseAct
         if (mBind != null) {
             mBind.unbind();
         }
-        MyApplication.getInstance().removeActivity(this);
     }
 }
