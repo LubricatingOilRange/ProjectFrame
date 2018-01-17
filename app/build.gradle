@@ -30,53 +30,53 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     //base
-    compile rootProject.ext.dependencies["appcompat-v7"]
-    compile rootProject.ext.dependencies["recyclerview-v7"]
-    compile rootProject.ext.dependencies["cardview-v7"]
-    compile rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["recyclerview-v7"]
+    implementation rootProject.ext.dependencies["cardview-v7"]
+    implementation rootProject.ext.dependencies["design"]
 
     //butterKnife 的依赖
-    compile rootProject.ext.dependencies["butterknife"]
+    implementation rootProject.ext.dependencies["butterknife"]
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
 
     //dagger 的依赖
-    compile rootProject.ext.dependencies["dagger"]
+    implementation rootProject.ext.dependencies["dagger"]
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     provided rootProject.ext.dependencies["annotation"]
 
     //okhttp 的依赖
-    compile rootProject.ext.dependencies["okhttp"]
-    compile rootProject.ext.dependencies["okhttp-logging-interceptor"]
+    implementation rootProject.ext.dependencies["okhttp"]
+    implementation rootProject.ext.dependencies["okhttp-logging-interceptor"]
 
     //retrofit 的依赖
-    compile rootProject.ext.dependencies["retrofit"]
-    compile rootProject.ext.dependencies["retrofit-converter-gson"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["retrofit-converter-gson"]
 
     //rxJava 的依赖
-    compile rootProject.ext.dependencies["rxjava"]
-    compile rootProject.ext.dependencies["rxandroid"]
-    compile rootProject.ext.dependencies["rxpermissions"]
-    compile rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["rxpermissions"]
+    implementation rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
 
     //glide 的依赖
-    compile rootProject.ext.dependencies["glide"]
-    compile rootProject.ext.dependencies["glide-okhttp3-integration"]
-    compile rootProject.ext.dependencies["glide-transformations"]
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["glide-okhttp3-integration"]
+    implementation rootProject.ext.dependencies["glide-transformations"]
 
     //greenDao数据库
 //    compile rootProject.ext.dependencies["greendao"]
 //    compile rootProject.ext.dependencies["greendao-generator"]
 
     //检测内存泄露，logcat 就会打印出信息
-    debugCompile rootProject.ext.dependencies["leakcanary-android"]
-    releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
+//    debugCompile rootProject.ext.dependencies["leakcanary-android"]
+//    releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
 
     //性能监控组件 找出App界面卡顿（ANR...）
-    debugCompile rootProject.ext.dependencies["blockcanary-android"]
-    releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
+//    debugCompile rootProject.ext.dependencies["blockcanary-android"]
+//    releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
 
     //Other
-    compile rootProject.ext.dependencies["gson"] //gson
+    implementation rootProject.ext.dependencies["gson"] //gson
     //compile rootProject.ext.dependencies["multidex"] //方法数65535处理 21（5.0）以下需要添加
-    compile rootProject.ext.dependencies["logger"] //Logger日志
+    implementation rootProject.ext.dependencies["logger"] //Logger日志
 }
