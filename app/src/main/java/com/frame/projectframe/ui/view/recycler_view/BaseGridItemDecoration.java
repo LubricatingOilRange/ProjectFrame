@@ -40,7 +40,7 @@ public class BaseGridItemDecoration extends RecyclerView.ItemDecoration {
         if (mDivider == null || layoutManager.getChildCount() == 0) {
             return;
         }
-        //判断总的数量是否可以整除
+        //判断总的数量是否可以整除 4
         int spanCount = layoutManager.getSpanCount();
 
         int left;

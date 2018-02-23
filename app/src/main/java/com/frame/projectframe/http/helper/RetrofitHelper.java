@@ -10,6 +10,10 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import io.reactivex.Flowable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 
 /**
  * Created by ruibing.han on 2017/10/20.
@@ -26,7 +30,7 @@ public class RetrofitHelper implements HttpHelper {
         this.mOtherService = otherService;
     }
 
-    /**
+    /*
      * 登录 - 获取数据
      *
      * @return
@@ -36,6 +40,9 @@ public class RetrofitHelper implements HttpHelper {
         return mAppService.login(parameterMap);
     }
 
-//   ----------------------------------------- 图片（文件）上传-----------------------------
-
+    //   ----------------------------------------- 图片（文件）上传-----------------------------
+    @Override
+    public Flowable<String> upSingleLoad(Map<String, RequestBody> parameterMap, MultipartBody body) {
+        return mAppService.upLoad(parameterMap, body);
+    }
 }

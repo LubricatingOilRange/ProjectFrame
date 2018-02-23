@@ -497,7 +497,7 @@ public class FileUtil {
     }
 
     //关流
-    private static void closeIO(Closeable... closeables) {
+    public static void closeIO(Closeable... closeables) {
         for (Closeable closeable : closeables) {
             if (closeable != null) {
                 try {
