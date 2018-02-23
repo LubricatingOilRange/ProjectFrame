@@ -15,7 +15,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +39,7 @@ public class FileUtil {
     /**
      * 检查是否已挂载SD卡镜像（是否存在SD卡）
      */
-    public static boolean isMountedSDCard() {
+    private static boolean isMountedSDCard() {
         if (Environment.MEDIA_MOUNTED.equals(Environment
                 .getExternalStorageState())) {
             return true;
@@ -69,7 +68,7 @@ public class FileUtil {
         return flag;
     }
 
-    /**
+    /*
      * 创建目录
      *
      * @param dirName 文件夹名称
@@ -92,7 +91,7 @@ public class FileUtil {
         return destDir;
     }
 
-    /**
+    /*
      * 删除文件（若为目录，则递归删除子目录和文件）
      *
      * @param file ()
@@ -107,8 +106,8 @@ public class FileUtil {
             if (subFiles != null) {
                 int num = subFiles.length;
                 // 删除子目录和文件
-                for (int i = 0; i < num; i++) {
-                    deleteFile(subFiles[i], true);
+                for (File subFile : subFiles) {
+                    deleteFile(subFile, true);
                 }
             }
         }
@@ -117,13 +116,13 @@ public class FileUtil {
         }
     }
 
-    /**
+    /*
      * 获取文件大小，单位为byte（若为目录，则包括所有子目录和文件）
      *
      * @param file
      * @return
      */
-    public static long getFileSize(File file) {
+    private static long getFileSize(File file) {
         long size = 0;
         if (file.exists()) {
             if (file.isDirectory()) {
@@ -156,10 +155,10 @@ public class FileUtil {
      * @param filePath 文件路径
      * @param encoding 写文件编码
      */
-    public static String readFileByLines(String filePath, String encoding)
+    private static String readFileByLines(String filePath, String encoding)
             throws IOException {
         BufferedReader reader = null;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         try {
             reader = new BufferedReader(new InputStreamReader(
                     new FileInputStream(filePath), encoding));
@@ -242,7 +241,7 @@ public class FileUtil {
 
     //------------------------------------------------------写入文件-----------------------------------------------
 
-    /**
+    /*
      * 指定编码将内容写入目标文件
      *
      * @param target   目标文件
@@ -254,9 +253,6 @@ public class FileUtil {
             throws IOException {
         BufferedWriter writer = null;
         try {
-            if (!target.getParentFile().exists()) {
-                target.getParentFile().mkdirs();
-            }
             writer = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(target, false), encoding));
             writer.write(content);
@@ -266,7 +262,7 @@ public class FileUtil {
         }
     }
 
-    /**
+    /*
      * 写入文件
      *
      * @param inputStream 下载文件的字节流对象
@@ -278,8 +274,6 @@ public class FileUtil {
         OutputStream outputStream = null;
         // 在指定目录创建一个空文件并获取文件对象
         File mFile = new File(filePath);
-        if (!mFile.getParentFile().exists())
-            mFile.getParentFile().mkdirs();
         try {
             outputStream = new FileOutputStream(mFile);
             byte buffer[] = new byte[4 * 1024];
@@ -297,7 +291,7 @@ public class FileUtil {
         }
     }
 
-    /**
+    /*
      * 指定目录保存图片
      *
      * @param filePath 文件路径+文件名
@@ -310,9 +304,6 @@ public class FileUtil {
 
         try {
             File file = new File(filePath);
-            if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs();
-            }
             fos = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
             fos.flush();
@@ -322,7 +313,7 @@ public class FileUtil {
     }
 
 
-    /**
+    /*
      * 快速复制
      *
      * @param in
@@ -335,8 +326,6 @@ public class FileUtil {
             fileIn = new FileInputStream(in).getChannel();
             fileOut = new FileOutputStream(out).getChannel();
             fileIn.transferTo(0, fileIn.size(), fileOut);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -357,7 +346,7 @@ public class FileUtil {
         }
     }
 
-    /**
+    /*
      * 获取文件夹下所有文件
      *
      * @param path
@@ -380,7 +369,7 @@ public class FileUtil {
         return listFile;
     }
 
-    /**
+    /*
      * 分享文件
      *
      * @param context
@@ -395,7 +384,7 @@ public class FileUtil {
         context.startActivity(Intent.createChooser(intent, title));
     }
 
-    /**
+    /*
      * 压缩
      *
      * @param is
@@ -418,7 +407,7 @@ public class FileUtil {
         }
     }
 
-    /**
+    /*
      * 解压
      *
      * @param is
@@ -440,7 +429,7 @@ public class FileUtil {
         }
     }
 
-    /**
+    /*
      * 打开图片
      *
      * @param mContext
@@ -455,7 +444,7 @@ public class FileUtil {
         mContext.startActivity(intent);
     }
 
-    /**
+    /*
      * 打开视频
      *
      * @param mContext
@@ -471,7 +460,7 @@ public class FileUtil {
         mContext.startActivity(intent);
     }
 
-    /**
+    /*
      * 打开URL
      *
      * @param mContext
@@ -483,7 +472,7 @@ public class FileUtil {
         mContext.startActivity(intent);
     }
 
-    /**
+    /*
      * 下载文件
      *
      * @param context
@@ -493,7 +482,9 @@ public class FileUtil {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(fileurl));
         request.setDestinationInExternalPublicDir("/Download/", fileurl.substring(fileurl.lastIndexOf("/") + 1));
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-        downloadManager.enqueue(request);
+        if (downloadManager != null) {
+            downloadManager.enqueue(request);
+        }
     }
 
     //关流
