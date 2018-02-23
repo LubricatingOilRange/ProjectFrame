@@ -39,7 +39,7 @@ public class FileUtil {
     /**
      * 检查是否已挂载SD卡镜像（是否存在SD卡）
      */
-    private static boolean isMountedSDCard() {
+    static boolean isMountedSDCard() {
         if (Environment.MEDIA_MOUNTED.equals(Environment
                 .getExternalStorageState())) {
             return true;

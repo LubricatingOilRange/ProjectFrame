@@ -16,10 +16,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 
-/**
- * Created by ruibing.han on 2017/12/15.
- */
-
 public class OkHttpUtil {
 
     /*

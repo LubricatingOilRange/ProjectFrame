@@ -9,10 +9,6 @@ import com.frame.projectframe.module.glide.GlideCircleTransform;
 import com.frame.projectframe.module.glide.GlideRoundTransform;
 import com.frame.projectframe.module.glide.RotateTransformation;
 
-/*
- * Created by ruibing.han on 2017/8/4.
- */
-
 public class GlideUtil {
 
     private final static String LOAD_BITMAP = "GLIDE_LOAD_BITMAP";//加载bitmap，如果是GIF则显示第一帧

@@ -13,11 +13,8 @@ public class DimenUtil {
     }
 
     public static boolean isPxVal(TypedValue val) {
-        if (val != null && val.type == TypedValue.TYPE_DIMENSION &&
-                getComplexUnit(val.data) == TypedValue.COMPLEX_UNIT_PX) {
-            return true;
-        }
-        return false;
+        return val != null && val.type == TypedValue.TYPE_DIMENSION &&
+                getComplexUnit(val.data) == TypedValue.COMPLEX_UNIT_PX;
     }
 
     /*

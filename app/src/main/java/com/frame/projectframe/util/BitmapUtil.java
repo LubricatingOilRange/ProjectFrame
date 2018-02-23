@@ -53,9 +53,6 @@ public class BitmapUtil {
 
         String mDir = Environment.getExternalStorageDirectory() + "/HBJ";
         File dir = new File(mDir);
-        if (!dir.exists()) {
-            dir.mkdirs();//文件不存在，则创建文件
-        }
         File file = new File(mDir, fileName + ".png");
         FileOutputStream fOut = null;
         try {
