@@ -32,6 +32,7 @@ import java.util.zip.GZIPOutputStream;
  */
 
 public class FileUtil {
+
     private FileUtil() {
         throw new UnsupportedOperationException("cannot be instantiated");
     }

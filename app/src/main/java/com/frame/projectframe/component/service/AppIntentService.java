@@ -5,13 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.frame.projectframe.BuildConfig;
-import com.frame.projectframe.app.MyApplication;
 import com.frame.projectframe.ui.view.auto_layout.config.AutoLayoutConfig;
-import com.github.moduth.blockcanary.BlockCanary;
-import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
-import com.squareup.leakcanary.LeakCanary;
 
 
 /**

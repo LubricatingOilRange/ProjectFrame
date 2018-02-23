@@ -36,4 +36,6 @@ public class RetrofitHelper implements HttpHelper {
         return mAppService.login(parameterMap);
     }
 
+//   ----------------------------------------- 图片（文件）上传-----------------------------
+
 }

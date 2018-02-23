@@ -1,13 +1,22 @@
 package com.frame.projectframe.ui.activity.login;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+
 import com.frame.projectframe.R;
 import com.frame.projectframe.base.activity.BaseMvpActivity;
 import com.frame.projectframe.http.bean.UserCommand;
 import com.frame.projectframe.http.exception.AppException;
+import com.frame.projectframe.ui.activity.test.RecyclerActivity;
 import com.frame.projectframe.util.ToastUtil;
+
+import butterknife.BindView;
 
 public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements LoginContract.View {
 
+    @BindView(R.id.login)
+    Button bt_login;
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
@@ -22,6 +31,13 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     @Override
     public void onViewCreate() {
         super.onViewCreate();
+        bt_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RecyclerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //初始化数据

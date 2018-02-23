@@ -39,6 +39,8 @@
         <activity
             android:name=".ui.activity.main.MainActivity"
             android:theme="@style/ActivityTheme" />
+        <!--用来测试-->
+        <activity android:name=".ui.activity.test.RecyclerActivity" />
         <!-- ====================================service========================================= -->
         <!-- 初始化Service -->
         <service android:name=".component.service.AppIntentService" />
@@ -51,7 +53,6 @@
         <meta-data
             android:name="design_height"
             android:value="1280" />
-
     </application>
 
 </manifest>
