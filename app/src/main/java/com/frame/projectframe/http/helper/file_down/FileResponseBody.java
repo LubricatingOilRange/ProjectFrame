@@ -1,7 +1,5 @@
 package com.frame.projectframe.http.helper.file_down;
 
-import com.frame.projectframe.module.rxjava.RxBus;
-
 import java.io.IOException;
 
 import okhttp3.MediaType;

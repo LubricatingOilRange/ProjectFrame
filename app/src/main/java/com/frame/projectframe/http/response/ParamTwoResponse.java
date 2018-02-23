@@ -1,6 +1,6 @@
 package com.frame.projectframe.http.response;
 
-/**
+/*
  * Created by codeest on 2016/8/3.
  */
 //返回 请求成功结果提示和失败提示
