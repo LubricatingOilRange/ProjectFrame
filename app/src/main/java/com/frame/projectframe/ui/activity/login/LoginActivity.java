@@ -8,6 +8,8 @@ import com.frame.projectframe.R;
 import com.frame.projectframe.base.activity.BaseMvpActivity;
 import com.frame.projectframe.http.bean.UserCommand;
 import com.frame.projectframe.http.exception.AppException;
+import com.frame.projectframe.module.bean.DownInfo;
+import com.frame.projectframe.module.greendao.help.GreenDaoHelper;
 import com.frame.projectframe.ui.activity.test.RecyclerActivity;
 import com.frame.projectframe.util.ToastUtil;
 
@@ -17,6 +19,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @BindView(R.id.login)
     Button bt_login;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_login;
@@ -34,8 +37,18 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RecyclerActivity.class);
-                startActivity(intent);
+                for (int i = 0; i < 15; i++) {
+
+                    GreenDaoHelper.getInstance().insertDownInfo(new DownInfo(
+                            "abc-" + i,
+                            "gsd-" + i,
+                            "jkl-" + i,
+                            i * 10,
+                            i * 1000));
+                }
+//                Intent intent = new Intent(LoginActivity.this, RecyclerActivity.class);
+//                startActivity(intent);
+
             }
         });
     }

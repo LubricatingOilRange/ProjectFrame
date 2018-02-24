@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.frame.projectframe.BuildConfig;
+import com.frame.projectframe.module.greendao.GreenDaoManager;
 import com.frame.projectframe.ui.view.auto_layout.config.AutoLayoutConfig;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -36,7 +37,7 @@ public class AppIntentService extends IntentService {
         AutoLayoutConfig.getInstance().useDeviceSize().init(this);
 
         //初始化数据库
-        //GreenDaoManager.getInstance();
+        GreenDaoManager.getInstance();
 
         //Logger打印日志的初始化（添加日志附加条件）
         Logger.addLogAdapter(new AndroidLogAdapter() {

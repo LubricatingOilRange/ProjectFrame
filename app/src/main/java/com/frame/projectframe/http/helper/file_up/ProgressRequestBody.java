@@ -14,11 +14,11 @@ import okio.Sink;
  * Created by ruibing.han on 2018/2/23.
  */
 
-public class CountingRequestBody extends RequestBody {
+public class ProgressRequestBody extends RequestBody {
     private RequestBody mRequestBody;
     private UploadListener mUploadListener;
 
-    CountingRequestBody(RequestBody requestBody, UploadListener uploadListener) {
+    ProgressRequestBody(RequestBody requestBody, UploadListener uploadListener) {
         mRequestBody = requestBody;
         mUploadListener = uploadListener;
     }

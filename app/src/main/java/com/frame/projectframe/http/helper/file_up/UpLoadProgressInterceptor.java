@@ -26,7 +26,7 @@ public class UpLoadProgressInterceptor implements Interceptor {
 
         Request build = request.newBuilder()
                 .method(request.method(),
-                        new CountingRequestBody(request.body(),
+                        new ProgressRequestBody(request.body(),
                                 mUploadListener))
                 .build();
         return chain.proceed(build);

@@ -10,6 +10,7 @@ import java.io.File;
  */
 
 public class Constant {
+    public final static boolean DEBUG = true;
 
     //-----------------------------response code 请求数据成功后台返回的code-----------------------------//
     /**

@@ -53,13 +53,13 @@ ext {
             "glide-okhttp3-integration" : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
             "glide-transformations"     : "jp.wasabeef:glide-transformations:1.2.1",
 
-//            //greenDao数据库
-//            "greendao"                  : "org.greenrobot:greendao:${dependVersion.greendao}",
-//            "greendao-generator"        : "org.greenrobot:greendao-generator:${dependVersion.greendao}",
+            //greenDao数据库
+            "greendao"                  : "org.greenrobot:greendao:${dependVersion.greendao}",
+            "greendao-generator"        : "org.greenrobot:greendao-generator:${dependVersion.greendao}",
 
             //Other
             "gson"                      : "com.google.code.gson:gson:2.7",//gson
             "logger"                    : "com.orhanobut:logger:2.1.1",//logger打印日志
-            //  "multidex"                  : "com.android.support:multidex:1.0.1",//方法超过65535的处理
+            "multidex"                  : "com.android.support:multidex:1.0.1",//解决65535方法限制问题
     ]
 }

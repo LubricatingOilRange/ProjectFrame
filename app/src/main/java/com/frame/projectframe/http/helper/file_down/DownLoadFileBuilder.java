@@ -1,10 +1,7 @@
 package com.frame.projectframe.http.helper.file_down;
 
+import com.frame.projectframe.module.bean.DownInfo;
 import com.frame.projectframe.module.rxjava.RxUtil;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -67,13 +64,13 @@ public class DownLoadFileBuilder {
      * 单文件断点续传
      * @param loadListener
      */
-    public static void singleFileBreakpointDownLoad(final DownLoadListener<ResponseBody> loadListener) {
+    public static void singleFileBreakpointDownLoad(DownInfo info, final DownLoadListener<ResponseBody> loadListener) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = new CompositeDisposable();
         }
         mCompositeDisposable.add(DownLoadNetWorkConfig.getRetrofit(loadListener)
                 .create(DownLoadFileService.class)
-                .downloadBreakpoint("1023", "urlPath")
+                .downLoadFile()//"bytes=" + info.getReadLength() + "-",info.getUrl()
                 .doOnNext(new Consumer<ResponseBody>() {
                     @Override
                     public void accept(ResponseBody responseBody) throws Exception {

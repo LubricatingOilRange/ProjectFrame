@@ -3,8 +3,10 @@ package com.frame.projectframe.app;
 import android.app.Activity;
 import android.app.Application;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.multidex.MultiDex;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -33,6 +35,12 @@ public class MyApplication extends Application {
     public static int SCREEN_HEIGHT;//屏幕的高
 
     private Set<Activity> allActivities;//保存当前的所有的Activity页面
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);//处理65535问题
+    }
 
     @Override
     public void onCreate() {

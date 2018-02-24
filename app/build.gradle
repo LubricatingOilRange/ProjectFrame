@@ -10,7 +10,7 @@ android {
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
-        //multiDexEnabled true //65535解决，21以上（5.0） 21以下（需要添加一个jar包）
+        multiDexEnabled true //65535解决，21以上（5.0） 21以下（需要添加一个jar包）
     }
 
     buildTypes {
@@ -64,16 +64,8 @@ dependencies {
     implementation rootProject.ext.dependencies["glide-transformations"]
 
     //greenDao数据库
-//    compile rootProject.ext.dependencies["greendao"]
-//    compile rootProject.ext.dependencies["greendao-generator"]
-
-    //检测内存泄露，logcat 就会打印出信息
-//    debugCompile rootProject.ext.dependencies["leakcanary-android"]
-//    releaseCompile rootProject.ext.dependencies["leakcanary-android-no-op"]
-
-    //性能监控组件 找出App界面卡顿（ANR...）
-//    debugCompile rootProject.ext.dependencies["blockcanary-android"]
-//    releaseCompile rootProject.ext.dependencies["blockcanary-no-op"]
+    implementation rootProject.ext.dependencies["greendao"]
+    implementation rootProject.ext.dependencies["greendao-generator"]
 
     //Other
     implementation rootProject.ext.dependencies["gson"] //gson
