@@ -4,7 +4,7 @@ import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/14.
  */
 

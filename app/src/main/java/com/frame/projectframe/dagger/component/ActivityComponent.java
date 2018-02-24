@@ -9,7 +9,7 @@ import com.frame.projectframe.ui.activity.main.MainActivity;
 
 import dagger.Component;
 
-/**
+/*
  * Created by 神马都是浮云 on 2017-09-02.
  */
 @ActivityScope

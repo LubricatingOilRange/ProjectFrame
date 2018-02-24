@@ -10,7 +10,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import okhttp3.OkHttpClient;
 
-/**
+/*
  * Created by 神马都是浮云 on 2017-09-02.
  */
 @Singleton

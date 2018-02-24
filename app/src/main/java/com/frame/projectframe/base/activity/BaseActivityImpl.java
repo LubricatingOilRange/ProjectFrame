@@ -1,6 +1,6 @@
 package com.frame.projectframe.base.activity;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/12.
  */
 

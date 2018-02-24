@@ -5,7 +5,7 @@ import android.os.Environment;
 
 import java.io.File;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/12.
  */
 

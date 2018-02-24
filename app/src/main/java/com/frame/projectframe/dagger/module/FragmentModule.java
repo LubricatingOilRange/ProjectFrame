@@ -8,7 +8,7 @@ import com.frame.projectframe.dagger.scope.FragmentScope;
 import dagger.Module;
 import dagger.Provides;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/15.
  */
 

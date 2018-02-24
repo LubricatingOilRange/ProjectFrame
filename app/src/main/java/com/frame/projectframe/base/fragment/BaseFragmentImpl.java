@@ -1,6 +1,6 @@
 package com.frame.projectframe.base.fragment;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/12.
  */
 

@@ -9,7 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/15.
  */
 

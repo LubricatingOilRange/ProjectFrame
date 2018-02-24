@@ -9,7 +9,7 @@ import com.frame.projectframe.dagger.module.ActivityModule;
 
 import javax.inject.Inject;
 
-/**
+/*
  * Created by ruibing.han on 2017/9/3.
  */
 

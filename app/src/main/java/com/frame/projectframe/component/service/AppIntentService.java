@@ -11,7 +11,7 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 
-/**
+/*
  * Created by 神马都是浮云 on 2017-09-02.
  */
 public class AppIntentService extends IntentService {

@@ -12,7 +12,7 @@ import com.frame.projectframe.dagger.module.FragmentModule;
 
 import javax.inject.Inject;
 
-/**
+/*
  * Created by ruibing.han on 2017/12/25.
  */
 
