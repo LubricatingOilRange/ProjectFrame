@@ -10,7 +10,7 @@ import okio.ForwardingSink;
 import okio.Okio;
 import okio.Sink;
 
-/**
+/*
  * Created by ruibing.han on 2018/2/23.
  */
 
@@ -18,7 +18,7 @@ public class CountingRequestBody extends RequestBody {
     private RequestBody mRequestBody;
     private UploadListener mUploadListener;
 
-    public CountingRequestBody(RequestBody requestBody, UploadListener uploadListener) {
+    CountingRequestBody(RequestBody requestBody, UploadListener uploadListener) {
         mRequestBody = requestBody;
         mUploadListener = uploadListener;
     }

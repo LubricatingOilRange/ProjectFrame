@@ -13,13 +13,13 @@ import retrofit2.http.Multipart;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 
-/**
+/*
  * Created by ruibing.han on 2017/10/20.
  */
 
 public interface HttpHelper {
 
-    /**
+    /*
      * 登录
      *
      * @return

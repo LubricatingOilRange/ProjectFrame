@@ -1,6 +1,5 @@
 package com.frame.projectframe.http.helper.file_up;
 
-import com.frame.projectframe.http.response.ParamOneResponse;
 import com.frame.projectframe.http.response.ParamTwoResponse;
 
 import java.util.Map;

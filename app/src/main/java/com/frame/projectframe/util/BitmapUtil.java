@@ -35,7 +35,7 @@ public class BitmapUtil {
 
         // options表示 如果不压缩是100，表示压缩率为0。如果是70，就表示压缩率是70，表示压缩30%;
         int options = 100;
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
 
         while (baos.toByteArray().length / 1024 > 200) {
             // 循环判断如果压缩后图片是否大于500kb继续压缩
@@ -44,15 +44,14 @@ public class BitmapUtil {
             options -= 10;
             if (options < 11) {//为了防止图片大小一直达不到200kb，options一直在递减，当options<0时，下面的方法会报错
                 // 也就是说即使达不到200kb，也就压缩到10了
-                bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);
+                bitmap.compress(Bitmap.CompressFormat.PNG, options, baos);
                 break;
             }
             // 这里压缩options%，把压缩后的数据存放到baos中
-            bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);
+            bitmap.compress(Bitmap.CompressFormat.PNG, options, baos);
         }
 
         String mDir = Environment.getExternalStorageDirectory() + "/HBJ";
-        File dir = new File(mDir);
         File file = new File(mDir, fileName + ".png");
         FileOutputStream fOut = null;
         try {

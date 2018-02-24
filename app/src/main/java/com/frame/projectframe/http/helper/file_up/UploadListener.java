@@ -1,6 +1,6 @@
 package com.frame.projectframe.http.helper.file_up;
 
-/**
+/*
  * Created by ruibing.han on 2018/2/23.
  */
 

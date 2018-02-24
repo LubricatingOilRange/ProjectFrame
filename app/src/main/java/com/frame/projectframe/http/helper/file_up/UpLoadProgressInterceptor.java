@@ -6,14 +6,14 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-/**
+/*
  * Created by ruibing.han on 2018/2/23.
  */
 
 public class UpLoadProgressInterceptor implements Interceptor {
     private UploadListener mUploadListener;
 
-    public UpLoadProgressInterceptor(UploadListener uploadListener) {
+    UpLoadProgressInterceptor(UploadListener uploadListener) {
         mUploadListener = uploadListener;
     }
 

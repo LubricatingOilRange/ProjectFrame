@@ -1,13 +1,10 @@
 package com.frame.projectframe.http.helper.file_up;
 
-import com.frame.projectframe.http.response.ParamOneResponse;
 import com.frame.projectframe.http.response.ParamTwoResponse;
 import com.frame.projectframe.module.rxjava.RxUtil;
 import com.frame.projectframe.util.BitmapUtil;
 
 import org.reactivestreams.Publisher;
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.io.File;
 import java.util.HashMap;
@@ -15,34 +12,39 @@ import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Flowable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
 import io.reactivex.subscribers.ResourceSubscriber;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-/**
+/*
  * Created by ruibing.han on 2018/2/23.
  */
 
-public class FileHandleBuilder {
-    /**
+public class UpLoadFileBuilder {
+
+    static CompositeDisposable mCompositeDisposable;
+
+    /*
      * 单文件上传
      *
-     * @param file 上传的文件
+     * @param filePath 上传的文件路径
      */
-    private void singleFileUpLoad(File file, final UploadListener<UploadEntities> callBack) {
-        RequestBody requestFile =
-                RequestBody.create(MediaType.parse("application/otcet-stream"), file);
+    public static void singleFileUpLoad(String filePath, final UploadListener<UploadEntities> callBack) {
+        File file = new File(filePath);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("application/otcet-stream"), file);
 
-        MultipartBody.Part body =
-                MultipartBody.Part.createFormData("file", file.getName(), requestFile);
-
-        UploadNetWorkConfig.getRetrofit(callBack).create(UploadFileService.class)
+        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), requestFile);
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        mCompositeDisposable.add(UploadNetWorkConfig.getRetrofit(callBack).create(UploadFileService.class)
                 .singleFileUpLoad(body)
                 .compose(RxUtil.<ParamTwoResponse<UploadEntities>>rxSchedulerHelper())
                 .compose(RxUtil.<UploadEntities>handleTwoParamResult())
-                .subscribe(new ResourceSubscriber<UploadEntities>() {
+                .subscribeWith(new ResourceSubscriber<UploadEntities>() {
                     @Override
                     protected void onStart() {
                         super.onStart();
@@ -63,23 +65,27 @@ public class FileHandleBuilder {
                     public void onComplete() {
                         callBack.uploadComplete();
                     }
-                });
+                })
+        );
     }
 
-    /**
+    /*
      * 多文件上传
      *
-     * @param fileList 上传的文件列表
+     * @param fileList 上传的文件路径列表
      */
-    private void multiFileUpLoad(List<String> fileList, final UploadListener<String> callBack) {
-        final Map<String, RequestBody> map = new HashMap<>();
+    public static void multiFileUpLoad(List<String> fileList, final UploadListener<String> callBack) {
+        final Map<String, RequestBody> map = new HashMap<>();//添加额外的参数
         map.put("userName", RequestBody.create(MediaType.parse("form-data"), "小明"));
         map.put("password", RequestBody.create(MediaType.parse("form-data"), "123456"));
         map.put("userId", RequestBody.create(MediaType.parse("form-data"), "35234"));
 
         final MultipartBody.Builder builder = new MultipartBody.Builder();
 
-        Flowable.fromIterable(fileList)
+        if (mCompositeDisposable == null) {
+            mCompositeDisposable = new CompositeDisposable();
+        }
+        mCompositeDisposable.add(Flowable.fromIterable(fileList)
                 .map(new Function<String, String>() {
                     @Override
                     public String apply(String url) throws Exception {
@@ -98,7 +104,7 @@ public class FileHandleBuilder {
                     }
                 })
                 .compose(RxUtil.<String>rxSchedulerHelper())
-                .subscribe(new ResourceSubscriber<String>() {
+                .subscribeWith(new ResourceSubscriber<String>() {
                     @Override
                     protected void onStart() {
                         super.onStart();
@@ -119,6 +125,14 @@ public class FileHandleBuilder {
                     public void onComplete() {
                         callBack.uploadComplete();
                     }
-                });
+                })
+        );
+    }
+
+    //取消上传
+    public void cancelSubscriber() {
+        if (mCompositeDisposable != null) {
+            mCompositeDisposable.clear();
+        }
     }
 }
