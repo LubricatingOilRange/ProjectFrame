@@ -12,7 +12,7 @@ public class BZOpenHelper extends DaoMaster.OpenHelper {
         super(context, name);
     }
 
-    public BZOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
+    BZOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory);
     }
 
