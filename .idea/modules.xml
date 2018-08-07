@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ProjectFrame.iml" filepath="$PROJECT_DIR$/ProjectFrame.iml" />
+      <module fileurl="file://D:\AndriodProject\DownLoadProject\ProjectFrame\ProjectFrame.iml" filepath="D:\AndriodProject\DownLoadProject\ProjectFrame\ProjectFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\AndriodProject\DownLoadProject\ProjectFrame\app\app.iml" filepath="D:\AndriodProject\DownLoadProject\ProjectFrame\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/paypal-wallet-facial/paypal-wallet-facial.iml" filepath="$PROJECT_DIR$/paypal-wallet-facial/paypal-wallet-facial.iml" />
     </modules>
   </component>
 </project>

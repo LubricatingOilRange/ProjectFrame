@@ -1,0 +1,58 @@
+def isDebug = true
+if (isDebug) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        if (isDebug) {
+            applicationId "com.paypal.android.p2pmobile"
+        }
+
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false //如果发现错误，lint工具是否应该退出这个程序。true表示退出。
+    }
+
+    resourcePrefix 'facial_'//資源文件 添加前綴
+    sourceSets {
+        main {
+            if (isDebug) {
+                manifest.srcFile 'build-types/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'build-types/release/AndroidManifest.xml'
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
